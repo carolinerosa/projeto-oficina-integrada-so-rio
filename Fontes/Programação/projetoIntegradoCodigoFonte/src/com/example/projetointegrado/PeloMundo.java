@@ -1,5 +1,6 @@
 package com.example.projetointegrado;
 
+import Creditos.CreditosPeloMundo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,22 +17,25 @@ import android.view.Window;
 
 public class PeloMundo extends View implements Runnable
 {
-	private Bitmap logo;
-	private Bitmap campanhas;
-	private Bitmap top5;
-	private Bitmap creditos;
-	private Bitmap gps;
-	private Bitmap barra;
+	private Bitmap background;
 	
 	private Rect  areaCampanhas;
 	private Rect  areaTop5;
 	private Rect  areaCreditos;
-	private Rect  areacampanhas;
+	private Rect  areaMapa;
+	private Rect  areaMapa2;
+	private Rect  areaBarra;	
+	private Rect  areaLogo;		
+	
 	ImageManager picture;
 	Paint paint;
 	Activity activity;
-	public static final String TAG = "PeloMundo";
-	
+	public static final String TAG = "PorMim";
+	View CampanhaTeste;
+	View creditosPeloMundo;
+	View menu;
+	View peloMundoTop5;
+
 	public PeloMundo(Context context) 
 	{	
 		super(context);
@@ -45,11 +49,7 @@ public class PeloMundo extends View implements Runnable
 
 		activity = (Activity) context;
 
-		logo = picture.ImageManager("TelaPrincipal_Cor2_EspacoLogo.png", context);
-		campanhas = picture.ImageManager("TelaPrincipal_Cor2_Campanhas.png", context);
-		gps = picture.ImageManager("TelaPrincipal_Cor2_Mapa.png", context);
-		top5 = picture.ImageManager("TelaPrincipal_Cor2_Top5_Fechado.png", context);
-		creditos = picture.ImageManager("TelaPrincipal_Cor2_Creditos.png", context);
+		background = picture.ImageManager("TelaPrincipal_Pelomundo.png", context);
 
 		// TODO Auto-generated constructor stub
 	}
@@ -58,28 +58,23 @@ public class PeloMundo extends View implements Runnable
 	{
 		super.draw(canvas);
 		
-		canvas.drawBitmap(logo, getWidth()/24, getHeight()/20, paint);
-		canvas.drawBitmap(campanhas, getWidth()/24, getHeight()/2.4f, paint);
-		canvas.drawBitmap(gps, getWidth()/24,getHeight()/1.8f, paint);
-		canvas.drawBitmap(top5, getWidth()/2, getHeight()/20, paint);
-		canvas.drawBitmap(creditos, getWidth()/24, getHeight()/1.3f, paint);
+		canvas.drawBitmap(background, 0, -20, paint);
 		
 		// Desenhando os Rects.
-		areaCampanhas = new Rect(getWidth()/24,getHeight()/2 - 26, getWidth()/24 + (int)campanhas.getWidth(),
-				getHeight()/2 + (int)campanhas.getHeight() - 26);
-		
-		areaTop5 = new Rect(getWidth()/2, getHeight()/20, getWidth()/2 + (int)top5.getWidth(),
-				getHeight()/20 + (int)top5.getHeight());
-		
-		areaCreditos = new Rect(getWidth()/24,getHeight() - 68, getWidth()/24 + (int)creditos.getWidth(),
-				getHeight() - 60 + (int)creditos.getHeight());
-		
-		// Exibindo os Rects
-/*		canvas.drawRect(areaCampanhas, paint);
+		areaCampanhas = new Rect(17, 130, 115, 165);	
+		areaTop5 = new Rect(130, 20, 230, 45);				
+		areaCreditos = new Rect(10, 235, 55, 275);
+		areaMapa = new Rect(65, 170, 225, 270);
+		areaMapa2 = new Rect(20, 170, 60, 230);
+		areaBarra = new Rect(10, 285, 230,300);
+		areaLogo = new Rect(20, 20,120,120);
+				
+/*		canvas.drawRect(areaCreditos, paint);
+		canvas.drawRect(areaCampanhas, paint);
 		canvas.drawRect(areaTop5, paint);
-		canvas.drawRect(areaCreditos, paint);*/
-	//	canvas.drawRect(areaCampanhas, paint);
-
+		canvas.drawRect(areaMapa, paint);
+		canvas.drawRect(areaMapa2, paint);
+		canvas.drawRect(areaBarra, paint);*/
 }
 	
 	public boolean onTouchEvent(MotionEvent event) 
@@ -97,17 +92,46 @@ public class PeloMundo extends View implements Runnable
 		if (event.getAction() == MotionEvent.ACTION_UP) 
 		{
 			Log.i(TAG, "Entrou no action up");
-			int a = (int)event.getRawX();
-			int b = (int)event.getRawY();
+			int a = (int)event.getX();
+			int b = (int)event.getY();
 
 			// Campanhas
 			if(areaCampanhas.contains(a,b))
 			{
-				// Manoela chamará a listView de Campanhas PeloMundo aqui.
+				Log.i(TAG, "Escolhi todas as campanhas por mim");
+				// Manoela chamará a listView de Campanhas de PorMim aqui.
+				Intent intent = new Intent(activity, CampanhasPeloMundo.class);
+				activity.startActivity(intent);
+				activity.finish();
 			}
-
+			
+			// Mapas
+			if(areaMapa.contains(a,b))
+			{
+				// Vitória chamará o mapa geral aqui.
+				
+			}
+			
+			// Top 5
+			if(areaTop5.contains(a,b))
+			{
+				peloMundoTop5 = new PeloMundoTop5(activity);
+				activity.setContentView(peloMundoTop5);				
+			}
+			
+			// Créditos
+			if(areaCreditos.contains(a,b))
+			{
+				creditosPeloMundo = new CreditosPeloMundo(activity);
+				activity.setContentView(creditosPeloMundo);				
+			}
+			
+			if (areaLogo.contains(a,b))
+			{
+				menu = new MenuInicial(activity);
+				activity.setContentView(menu);
+			}
 		}
-		
 		return super.onTouchEvent(event);
 	}
 	
@@ -122,7 +146,7 @@ public class PeloMundo extends View implements Runnable
 			
 			catch(Exception e)
 			{
-				Log.e("Deu erro", "Quem sabe mete o pe");
+				Log.e("Deu erro", "Exceção do método run.");
 			}
 			
 			postInvalidate();
@@ -131,4 +155,3 @@ public class PeloMundo extends View implements Runnable
 	}
 	
 }
-
