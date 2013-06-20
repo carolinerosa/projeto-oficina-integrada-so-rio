@@ -1,0 +1,3 @@
+Instruções para a instalação do protótipo Sôrio:
+
+O usuário deverá, para poder usar o aplicativo em seu telefone celular, ter no mesmo um sistema operacional android. Desta forma, é necessário que ele "jogue" o executável no formato .apk em seu celular e que faça a instalação desse arquivo. É necessário que a opção "Permitir a instalação de aplicativos que não sejam do Market" esteja habilitada. 
