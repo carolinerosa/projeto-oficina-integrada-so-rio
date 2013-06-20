@@ -37,7 +37,6 @@ public class MenuInicial extends View implements Runnable
 	View loadPeloOutro;
 	View loadPeloMundo;
 	
-	
 	public MenuInicial(Context context) 
 	{	
 		super(context);
@@ -52,7 +51,7 @@ public class MenuInicial extends View implements Runnable
 		activity = (Activity) context;
 		
 		// Carregando as imagens.
-		background = img.ImageManager("backgroundMenu.png", context);
+		background = img.ImageManager("TelaOpacidade-01.png", context);
 		backgroundOpcoes = img.ImageManager("fundoOpcoes.png", context);
 		picture_PorMim = img.ImageManager("barraEscolhaPorMim.png", context);
 		picture_PeloOutro = img.ImageManager("barraEscolhaPeloOutro.png", context);
@@ -67,7 +66,7 @@ public class MenuInicial extends View implements Runnable
 		paint.setTextSize(20);
 		
 		// Desenhando o background
-		canvas.drawBitmap(background, 0, 0, paint);
+		canvas.drawBitmap(background, 0, -20, paint);
 		canvas.drawBitmap(backgroundOpcoes, 20, 80, paint);
 
 		// Desenhando as opcoes.
@@ -99,15 +98,28 @@ public class MenuInicial extends View implements Runnable
 			
 			int a = (int)event.getRawX();
 			int b = (int)event.getRawY();
+			
+
+		}
+		
+		if (event.getAction() == MotionEvent.ACTION_MOVE) 
+		{
+//			Log.i(TAG, "Entrou no action move");
+		}
+		
+		if (event.getAction() == MotionEvent.ACTION_UP) 
+		{
+			Log.i(TAG, "Entrou no action up");
+			
+			int a = (int)event.getX();
+			int b = (int)event.getY();
 
 			// Por Mim
 			if(areaPorMim.contains(a,b))
 			{
 				Log.i(TAG, "Escolhi Por Mim!! ");
 				loadPorMim = new PorMim(activity);
-				activity.setContentView(loadPorMim);
-				
-				
+				activity.setContentView(loadPorMim);	
 				//porMim = new PorMimPadrao(super.getContext());
 			}
 			
@@ -128,44 +140,8 @@ public class MenuInicial extends View implements Runnable
 			}
 			
 			
-		}
-		
-		if (event.getAction() == MotionEvent.ACTION_MOVE) 
-		{
-//			Log.i(TAG, "Entrou no action move");
-		}
-		
-		if (event.getAction() == MotionEvent.ACTION_UP) 
-		{
-//			Log.i(TAG, "Entrou no action up");
-			int a = (int)event.getRawX();
-			int b = (int)event.getRawY();
 
-			// Por Mim
-		/*	if(areaPorMim.contains(a,b))
-			{
-				Log.i(TAG, "Escolhi Por Mim!! ");
-				//loadPorMim = new PorMimPadrao(activity);
-				//activity.setContentView(loadPorMim);	
-				PorMimPadrao c = new PorMimPadrao(super.getContext());
-			}
-			*/
-/*			// Pelo Outro
-			if(areaPeloOutro.contains(a,b))
-			{
-				Log.i(TAG, "Escolhi Pelo Outro!! ");
-				loadPorMim = new PorMimPadrao(activity);
-				activity.setContentView(loadPorMim);	
-			}
-	*/		
-			// Pelo Mundo
-/*			if(areaPeloMundo.contains(a,b))
-			{
-				Log.i(TAG, "Escolhi Pelo Mundo!! ");
-				loadPorMim = new PorMimPadrao(activity);
-				activity.setContentView(loadPorMim);	
-			}
-			*/
+
 		}
 		
 		return super.onTouchEvent(event);

@@ -20,7 +20,7 @@ import android.widget.TextView;
 public class LinguagemArrayAdapter extends ArrayAdapter<JSONObject> {
   private static final String tag = "LinguagemArrayAdapter";
   private Context context;
-  public String savedName;
+  private String directory;
 
   // Elementos de cada linha da lista
   private TextView txtLinguagem;
@@ -64,14 +64,14 @@ public class LinguagemArrayAdapter extends ArrayAdapter<JSONObject> {
     JSONObject category = getItem(position);
 
     // Recuperando referencia dos elementos da interface
-    txtLinguagem = (TextView) row.findViewById(R.id.frase);
+    txtLinguagem = (TextView) row.findViewById(R.id.textView1);
     txtDescricao = (TextView) row.findViewById(R.id.textView2);
     
     // Setando valores
     txtLinguagem.setText(category.optString("nome", ""));
     txtDescricao.setText(category.optString("descricao", ""));
-
-    savedName = txtLinguagem.getText().toString();
+    
     return row;
   }
+
 }

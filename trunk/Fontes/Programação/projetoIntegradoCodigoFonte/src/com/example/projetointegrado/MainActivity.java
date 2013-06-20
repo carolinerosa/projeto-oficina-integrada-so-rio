@@ -13,7 +13,7 @@ import android.view.Window;
 // Classe equivalente a tela inicial, onde todas as opções são mostradas ao usuário.
 public class MainActivity extends Activity 
 {
-	
+
 	public final String TAG = "MainActivity";
 	
 	@Override
@@ -23,13 +23,12 @@ public class MainActivity extends Activity
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    setVolumeControlStream(AudioManager.STREAM_MUSIC);
 	    MenuInicial menu = new MenuInicial(this);
-		setContentView(menu);	
-//	    Intent intent = new Intent(this, Campanhas.class);
-//				this.startActivity(intent);
-//				((Activity)this).finish();	
-	    
-//	   Campanhas menu = new Campanhas(this);
-//		setContentView(menu);
-//		
+		setContentView(menu);		
 	}
+	
+	 public void onBackPressed() 
+	 {
+		 finish();
+		 super.onBackPressed();
+	 }
 }
