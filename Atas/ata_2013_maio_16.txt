@@ -1,0 +1,6 @@
+Roteiro: 
+Seleção de imagens, texto dos créditos e refez o texto das campanhas sociais. 
+Multimídia: 
+Edição da tela campanhas,  definição do padrão das imagens, exportação da tela principal e tipografia.
+ Programação:
+Verificação da qualidade das  imagens do XML na ferramenta eclipse e avanço na exibição dos mapas quanto aos marcadores das campanhas (exibição no mapa). 
