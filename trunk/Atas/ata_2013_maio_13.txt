@@ -1,0 +1,4 @@
+Ata - 13/05
+
+Cleyton entregou com adianto todas as bases das telas, inclusive a de créditos. O grupo aprovou e concordamos em usar opacidade 60%. Iniciamos uma reunião sobre a animação, mas não concluímos nada. É preciso marcar outra reunião até quinta-feira.
+Maillon seguiu o conselho do Cleyton e estipulou uma média de caracteres por causa da diferença de espaço ocupado por cada letra. Definiu que para tela principal haverá 100 a 105 caracteres. A média das outras telas ficará para quinta-feira. Mariana não entregou a logo ainda. Disse que amanhã, 15/05, entregaria. Definimos que a tela pelo mundo seria mantida na estrutura original, porém na tela campanhas haveria uma aba “DICAS” para encaminhar o usuário para dicas relacionadas ao meio ambiente.
