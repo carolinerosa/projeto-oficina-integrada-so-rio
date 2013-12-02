@@ -1,5 +1,6 @@
 package com.example.projetointegrado;
 
+import Creditos.CreditosPeloMundo;
 import Creditos.CreditosPorMim;
 import android.app.Activity;
 import android.content.Context;
@@ -17,7 +18,13 @@ import android.view.Window;
 
 public class PeloMundoTop5 extends View implements Runnable
 {
-	private Bitmap background;
+	private Bitmap imgBackground;
+	private Bitmap imgLogo;
+	private Bitmap imgmapa;
+	private Bitmap imgTop5;
+	private Bitmap imgCreditos;
+	private Bitmap imgCampanhas;
+	private Bitmap imgTexto;	
 	
 	private Rect  areaCampanhas;
 	private Rect  areaTop5;
@@ -26,6 +33,9 @@ public class PeloMundoTop5 extends View implements Runnable
 	private Rect  areaMapa2;
 	private Rect  areaBarra;	
 	private Rect  areaLogo;	
+	private Rect  areaBackground;
+	private Rect  areaTexto;
+	
 	
 	ImageManager picture;
 	Paint paint;
@@ -34,7 +44,6 @@ public class PeloMundoTop5 extends View implements Runnable
 	View CampanhaTeste;
 	View creditosPorMim;
 	View menu;
-	View porMim;
 	View porMimTop5;
 	
 	boolean top5;
@@ -52,8 +61,15 @@ public class PeloMundoTop5 extends View implements Runnable
 
 		activity = (Activity) context;
 		
-		background = picture.ImageManager("PeloMundo_Top5_aberto.png", context);
-
+		imgBackground = picture.ImageManager("TelaPrincipal_Pormim.png", context);
+		imgLogo = picture.ImageManager("TelaPrincipal_Pormim.png", context);
+		imgmapa = picture.ImageManager("TelaPrincipal_Pormim.png", context);
+		imgTop5 = picture.ImageManager("TelaPrincipal_Pormim.png", context);
+		imgCampanhas = picture.ImageManager("TelaPrincipal_Pormim.png", context);
+		imgCreditos = picture.ImageManager("TelaPrincipal_Pormim.png", context);
+//		imgTexto = picture.ImageManager("TelaPrincipal_Pormim.png", context);
+		
+		
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -61,27 +77,39 @@ public class PeloMundoTop5 extends View implements Runnable
 	{
 		super.draw(canvas);
 		
-		canvas.drawBitmap(background, 0, -20, paint);
-		
-		// Desenhando os Rects.
-		areaCampanhas = new Rect(17, 130, 115, 170);	
-		areaTop5 = new Rect(130, 20, 230, 45);				
-		areaCreditos = new Rect(10, 235, 55, 275);
-		areaMapa = new Rect(65, 170, 225, 270);
-		areaMapa2 = new Rect(20, 170, 60, 230);
-		areaBarra = new Rect(10, 285, 230,300);
-		areaLogo = new Rect(20, 20,120,120);
+		areaBackground = new Rect(0,0,getWidth(),getHeight());
 
-/*		canvas.drawRect(areaCreditos, paint);
+		areaLogo = new Rect((int)(getWidth()/12),(int)(getHeight()/13.5),(int)(getWidth()/2.15f),(int)(getHeight()/2.65f));
+
+		areaCampanhas = new Rect((int)(getWidth()/12),(int)(getHeight()/2.3),(int)(getWidth()/2.15f),(int)(getHeight()/1.9f));
+
+		areaCreditos = new Rect((int)(getWidth()/14),(int)(getHeight()/1.28),(int)(getWidth()/5f),(int)(getHeight()/1.12f));
+	
+		areaTop5 = new Rect((int)(getWidth()/1.85f),(int)(getHeight()/14),(int)(getWidth()/1.08f),(int)(getHeight()/2f));
+		
+		areaMapa = new Rect((int)(getWidth()/4),(int)(getHeight()/1.75f),(int)(getWidth()/1.07f),(int)(getHeight()/1.1f));
+		
+//		areaTexto = new Rect((int)(getWidth()/1.85f),(int)(getHeight()/6),(int)(getWidth()/1.08f),(int)(getHeight()/2f));
+		
+//		areaMapa2 = new Rect((int)(getWidth()/14),(int)(getHeight()/1.75),(int)(getWidth()/4f),(int)(getHeight()/1.32f));
+
+//		canvas.drawBitmap(imgBackground, null, areaBackground, paint);
+		canvas.drawBitmap(imgLogo, null, areaLogo, paint);
+		canvas.drawBitmap(imgCampanhas, null, areaCampanhas, paint);
+		canvas.drawBitmap(imgCreditos, null, areaCreditos, paint);
+		canvas.drawBitmap(imgTop5, null, areaTop5, paint);
+		canvas.drawBitmap(imgmapa, null, areaMapa, paint);
+//		canvas.drawBitmap(imgTexto, null, areaTexto, paint);
+		
+
+/*		canvas.drawRect(areaLogo, paint);
 		canvas.drawRect(areaCampanhas, paint);
+		canvas.drawRect(areaCreditos, paint);
 		canvas.drawRect(areaTop5, paint);
+//		canvas.drawRect(areaMapa2, paint);
 		canvas.drawRect(areaMapa, paint);
-		canvas.drawRect(areaMapa2, paint);
-		canvas.drawRect(areaBarra, paint);*/
-		//canvas.drawRect(areaCreditos, paint);
-		
-	//	canvas.drawRect(areaLogo, paint);
-
+		canvas.drawRect(areaTexto, paint);
+*/
 }
 	
 	public boolean onTouchEvent(MotionEvent event) 
@@ -106,7 +134,6 @@ public class PeloMundoTop5 extends View implements Runnable
 			if(areaCampanhas.contains(a,b))
 			{
 				Log.i(TAG, "Escolhi todas as campanhas por mim");
-				// Manoela chamará a listView de Campanhas de PorMim aqui.
 				Intent intent = new Intent(activity, CampanhasPorMim.class);
 				activity.startActivity(intent);
 				activity.finish();
@@ -115,21 +142,22 @@ public class PeloMundoTop5 extends View implements Runnable
 			// Mapas
 			if(areaMapa.contains(a,b))
 			{
-				// Vitória chamará o mapa geral aqui.
+				// Carol chamará o mapa geral aqui.
+			}
+			
+			// Top 5
+			if(areaTop5.contains(a,b))
+			{
+				porMimTop5 = new PeloMundo(activity);
+				activity.setContentView(porMimTop5);				
 			}
 			
 			// Créditos
 			if(areaCreditos.contains(a,b))
 			{
 				Log.i(TAG, "Escolhi créditos");
-				creditosPorMim = new CreditosPorMim(activity);
+				creditosPorMim = new CreditosPeloMundo(activity);
 				activity.setContentView(creditosPorMim);
-			}
-			
-			if(areaTop5.contains(a,b))
-			{
-				porMim = new PeloMundo(activity);
-				activity.setContentView(porMim);				
 			}
 			
 			if (areaLogo.contains(a,b))
