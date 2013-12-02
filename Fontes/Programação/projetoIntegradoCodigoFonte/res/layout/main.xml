@@ -35,27 +35,27 @@
 
         <ImageButton
             android:id="@+id/imgbutton1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
             android:onClick="pormim"
             android:scaleType="fitXY"
-            android:src="@drawable/telainicial_pormim01" />
+            android:src="@drawable/icone_pormim" />
 
         <ImageButton
             android:id="@+id/imgbutton3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
             android:onClick="pelooutro"
             android:scaleType="fitXY"
-            android:src="@drawable/telainicial_pelooutro01" />
+            android:src="@drawable/icone_pelooutro" />
 
            <ImageButton
                android:id="@+id/imgbutton2"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
+               android:layout_width="320dp"
+               android:layout_height="45dp"
                android:onClick="pelomundo"
                android:scaleType="fitXY"
-               android:src="@drawable/telainicial_pelomundo01" />
+               android:src="@drawable/icone_pelomundo" />
 
     </LinearLayout>
 </SlidingDrawer>

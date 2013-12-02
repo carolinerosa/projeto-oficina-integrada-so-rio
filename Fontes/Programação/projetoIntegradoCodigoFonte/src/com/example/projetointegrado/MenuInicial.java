@@ -27,6 +27,9 @@ public class MenuInicial extends View implements Runnable
 	private Rect areaPorMim;
 	private Rect areaPeloOutro;
 	private Rect areaPeloMundo;
+	private Rect areabackground;
+	private Rect areabackgroundOpcoes;
+		
 	
 	ImageManager img;
 	Paint paint;
@@ -65,27 +68,23 @@ public class MenuInicial extends View implements Runnable
 		super.draw(canvas);		
 		paint.setTextSize(20);
 		
+		areabackground = new Rect(0,0, getWidth(), getHeight());
+		areabackgroundOpcoes = new Rect(getWidth()/12, (int)(getHeight()/4f), (int)(getWidth()/1.05f), (int)(getHeight()/1.2f));
+		
+		areaPorMim = new Rect(getWidth()/8,(int)(getHeight()/3f), (int)(getWidth()/1.13f), (int)(getHeight()/2.3));
+		areaPeloOutro = new Rect(getWidth()/8,(int)(getHeight()/2f), (int)(getWidth()/1.13f), (int)(getHeight()/1.7));
+		areaPeloMundo = new Rect(getWidth()/8,(int)(getHeight()/1.5f), (int)(getWidth()/1.13f), (int)(getHeight()/1.3f));
+		
 		// Desenhando o background
-		canvas.drawBitmap(background, 0, -20, paint);
-		canvas.drawBitmap(backgroundOpcoes, 20, 80, paint);
+		canvas.drawBitmap(background, null, areabackground, paint);
+		canvas.drawBitmap(backgroundOpcoes, null, areabackgroundOpcoes, paint);
 
 		// Desenhando as opcoes.
-		canvas.drawBitmap(picture_PorMim, getWidth()/10, getHeight()/3, paint);
-		canvas.drawBitmap(picture_PeloOutro, getWidth()/10, getHeight()/2, paint);
-		canvas.drawBitmap(picture_PeloMundo, getWidth()/10, getHeight()/1.5f, paint);
+		canvas.drawBitmap(picture_PorMim, null, areaPorMim, paint);
+		canvas.drawBitmap(picture_PeloOutro, null, areaPeloOutro, paint);
+		canvas.drawBitmap(picture_PeloMundo, null, areaPeloMundo, paint);
 		
-	//	areaObjectsUp[0]= new Rect(0,0, 0+ (int)geometricFigures[0].getWidth(), (int)geometricFigures[0].getHeight());
-
 		// Desenhando os Rects.
-		areaPorMim = new Rect(getWidth()/10,getHeight()/3, getWidth()/10 + (int)picture_PorMim.getWidth(),
-				getHeight()/3 + (int)picture_PorMim.getHeight() + 10);
-		
-		areaPeloOutro = new Rect(getWidth()/10,getHeight()/2, getWidth()/10 + (int)picture_PeloOutro.getWidth(),
-				getHeight()/2 + (int)picture_PeloOutro.getHeight() + 10);
-		
-		areaPeloMundo = new Rect(getWidth()/10,getHeight()/2 + 50, getWidth()/10 + (int)picture_PeloMundo.getWidth(),
-				getHeight()/2 + (int)picture_PeloMundo.getHeight() + 60);
-
 /*		canvas.drawRect(areaPorMim, paint);
 		canvas.drawRect(areaPeloOutro, paint);
 		canvas.drawRect(areaPeloMundo, paint);*/
@@ -98,8 +97,6 @@ public class MenuInicial extends View implements Runnable
 			
 			int a = (int)event.getRawX();
 			int b = (int)event.getRawY();
-			
-
 		}
 		
 		if (event.getAction() == MotionEvent.ACTION_MOVE) 

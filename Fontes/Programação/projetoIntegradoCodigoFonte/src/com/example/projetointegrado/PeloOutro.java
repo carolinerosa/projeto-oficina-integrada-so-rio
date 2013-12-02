@@ -49,7 +49,7 @@ public class PeloOutro extends View implements Runnable
 
 		activity = (Activity) context;
 
-		background = picture.ImageManager("TelaPrincipal_Pelooutro.png", context);
+		background = picture.ImageManager("TelaPrincipal_PeloOutro-01.png", context);
 
 		// TODO Auto-generated constructor stub
 	}

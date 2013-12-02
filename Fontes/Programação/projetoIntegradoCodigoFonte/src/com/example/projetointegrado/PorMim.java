@@ -61,15 +61,18 @@ public class PorMim extends View implements Runnable
 		super.draw(canvas);
 		
 		canvas.drawBitmap(background, 0, -20, paint);
-		
+
+		areaLogo = new Rect((int)(getWidth()/12),(int)(getHeight()/13.5),(int)(getWidth()/2.15f),(int)(getHeight()/2.65f));
+
+		areaCampanhas = new Rect((int)(getWidth()/12),(int)(getHeight()/2.1),(int)(getWidth()/1.95f),(int)(getHeight()/2.2f));
+
 		// Desenhando os Rects.
-		areaCampanhas = new Rect(17, 130, 115, 170);	
+/*		areaCampanhas = new Rect(17, 130, 115, 170);	
 		areaTop5 = new Rect(130, 20, 230, 45);				
 		areaCreditos = new Rect(10, 235, 55, 275);
 		areaMapa = new Rect(65, 170, 225, 270);
 		areaMapa2 = new Rect(20, 170, 60, 230);
-		areaBarra = new Rect(10, 285, 230,300);
-		areaLogo = new Rect(20, 20,120,120);
+		areaBarra = new Rect(10, 285, 230,300);*/
 
 /*		canvas.drawRect(areaCreditos, paint);
 		canvas.drawRect(areaCampanhas, paint);
@@ -79,7 +82,8 @@ public class PorMim extends View implements Runnable
 		canvas.drawRect(areaBarra, paint);*/
 		//canvas.drawRect(areaCreditos, paint);
 		
-	//	canvas.drawRect(areaLogo, paint);
+		canvas.drawRect(areaLogo, paint);
+		canvas.drawRect(areaCampanhas, paint);
 
 }
 	
