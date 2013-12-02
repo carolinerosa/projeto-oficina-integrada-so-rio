@@ -134,7 +134,7 @@ public class PeloMundoTop5 extends View implements Runnable
 			if(areaCampanhas.contains(a,b))
 			{
 				Log.i(TAG, "Escolhi todas as campanhas por mim");
-				Intent intent = new Intent(activity, CampanhasPorMim.class);
+				Intent intent = new Intent(activity, CampanhasPeloMundo.class);
 				activity.startActivity(intent);
 				activity.finish();
 			}
