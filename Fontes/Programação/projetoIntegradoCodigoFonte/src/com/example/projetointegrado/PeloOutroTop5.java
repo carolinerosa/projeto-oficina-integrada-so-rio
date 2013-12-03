@@ -62,12 +62,12 @@ public class PeloOutroTop5 extends View implements Runnable
 		activity = (Activity) context;
 		
 		imgBackground = picture.ImageManager("TelaPrincipal_Pormim.png", context);
-		imgLogo = picture.ImageManager("TelaPrincipal_Pormim.png", context);
-		imgmapa = picture.ImageManager("TelaPrincipal_Pormim.png", context);
-		imgTop5 = picture.ImageManager("TelaPrincipal_Pormim.png", context);
-		imgCampanhas = picture.ImageManager("TelaPrincipal_Pormim.png", context);
-		imgCreditos = picture.ImageManager("TelaPrincipal_Pormim.png", context);
-//		imgTexto = picture.ImageManager("TelaPrincipal_Pormim.png", context);
+		imgLogo = picture.ImageManager("Logo_Pelooutro.png", context);
+		imgmapa = picture.ImageManager("Mapa_Pelooutro.png", context);
+		imgTop5 = picture.ImageManager("Top5AbertoPeloOutro.png", context);
+		imgCampanhas = picture.ImageManager("CampanhasPeloOutro.png", context);
+		imgCreditos = picture.ImageManager("Credito_PeloOutro.png", context);
+		//imgTexto = picture.ImageManager("TelaPrincipal_Pormim.png", context);
 		
 		
 		// TODO Auto-generated constructor stub
@@ -76,31 +76,30 @@ public class PeloOutroTop5 extends View implements Runnable
 	public void draw(Canvas canvas)
 	{
 		super.draw(canvas);
-		
 		areaBackground = new Rect(0,0,getWidth(),getHeight());
 
-		areaLogo = new Rect((int)(getWidth()/12),(int)(getHeight()/13.5),(int)(getWidth()/2.15f),(int)(getHeight()/2.65f));
+		areaLogo = new Rect((int)(getWidth()/20),(int)(5*getHeight()/40),(int)(9.5f*getWidth()/20),(int)(5*getHeight()/40+(imgLogo.getHeight() * 8.5f*getWidth()/20)/imgLogo.getWidth()));
 
-		areaCampanhas = new Rect((int)(getWidth()/12),(int)(getHeight()/2.3),(int)(getWidth()/2.15f),(int)(getHeight()/1.9f));
+		areaCampanhas = new Rect((int)(getWidth()/20),areaLogo.bottom + 2*getHeight()/40,(int)(9.5f*getWidth()/20),(int)((areaLogo.bottom + 2*getHeight()/40)+ (imgCampanhas.getHeight() * 8.5f*getWidth()/20)/imgCampanhas.getWidth()));
 
-		areaCreditos = new Rect((int)(getWidth()/14),(int)(getHeight()/1.28),(int)(getWidth()/5f),(int)(getHeight()/1.12f));
+
 	
-		areaTop5 = new Rect((int)(getWidth()/1.85f),(int)(getHeight()/14),(int)(getWidth()/1.08f),(int)(getHeight()/2f));
+		areaTop5 = new Rect((int)(10.5f*getWidth()/20),(int)(5*getHeight()/40),(int)(18.5f*getWidth()/20),(int)(5*getHeight()/40+(imgTop5.getHeight() * 8*getWidth()/20)/imgTop5.getWidth()));
 		
-		areaMapa = new Rect((int)(getWidth()/4),(int)(getHeight()/1.75f),(int)(getWidth()/1.07f),(int)(getHeight()/1.1f));
+		areaMapa = new Rect((int)(getWidth()/20),(int)areaCampanhas.bottom + (2*getHeight()/40),(int)(18.5f*getWidth()/20),(int)((areaCampanhas.bottom + 2*getHeight()/40)+(imgmapa.getHeight() * 17.5f*getWidth()/20)/imgmapa.getWidth()));
 		
-//		areaTexto = new Rect((int)(getWidth()/1.85f),(int)(getHeight()/6),(int)(getWidth()/1.08f),(int)(getHeight()/2f));
-		
+		//areaTexto = new Rect((int)(10.5f*getWidth()/20),areaTop5.bottom + 2*getHeight()/40,(int)(18.5f*getWidth()/20),(int)((areaTop5.bottom + 2*getHeight()/40)+ (imgTexto.getHeight() * 8*getWidth()/20)/imgTexto.getWidth()));
+		areaCreditos = new Rect((int)(getWidth()/20),(int)(areaMapa.bottom-(imgCreditos.getHeight() * 3*getWidth()/20)/imgCreditos.getWidth()),(int)(4*getWidth()/20),areaMapa.bottom);
 //		areaMapa2 = new Rect((int)(getWidth()/14),(int)(getHeight()/1.75),(int)(getWidth()/4f),(int)(getHeight()/1.32f));
 
 //		canvas.drawBitmap(imgBackground, null, areaBackground, paint);
 		canvas.drawBitmap(imgLogo, null, areaLogo, paint);
 		canvas.drawBitmap(imgCampanhas, null, areaCampanhas, paint);
+
+		canvas.drawBitmap(imgmapa, null, areaMapa, paint);
 		canvas.drawBitmap(imgCreditos, null, areaCreditos, paint);
 		canvas.drawBitmap(imgTop5, null, areaTop5, paint);
-		canvas.drawBitmap(imgmapa, null, areaMapa, paint);
-//		canvas.drawBitmap(imgTexto, null, areaTexto, paint);
-		
+		//canvas.drawBitmap(imgTexto, null, areaTexto, paint);
 
 /*		canvas.drawRect(areaLogo, paint);
 		canvas.drawRect(areaCampanhas, paint);

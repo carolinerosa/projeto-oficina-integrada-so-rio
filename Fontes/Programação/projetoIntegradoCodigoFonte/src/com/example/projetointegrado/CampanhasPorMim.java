@@ -243,7 +243,6 @@ public class CampanhasPorMim extends Activity {
     
     public void pormim(View sender)
 	{
-		
 		PorMim pm = new PorMim(this);
 		setContentView(pm);
 	}
