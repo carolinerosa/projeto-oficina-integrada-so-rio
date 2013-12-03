@@ -67,7 +67,7 @@ public class PeloMundo extends View implements Runnable
 		imgTop5 = picture.ImageManager("Top5FechadoPeloMundo.png", context);
 		imgCampanhas = picture.ImageManager("CampanhasPeloMundo.png", context);
 		imgCreditos = picture.ImageManager("Credito_PeloMundo.png", context);
-		imgTexto = picture.ImageManager("TelaPrincipal_Pormim.png", context);
+		imgTexto = picture.ImageManager("texto.png", context);
 		
 		
 		// TODO Auto-generated constructor stub

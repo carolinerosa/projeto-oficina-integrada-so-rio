@@ -67,7 +67,7 @@ public class PorMim extends View implements Runnable
 		imgTop5 = picture.ImageManager("Top5FechadoPorMim.png", context);
 		imgCampanhas = picture.ImageManager("TelaPrincipal_Cor1_CampanhasListView.png", context);
 		imgCreditos = picture.ImageManager("Credito_Pormim.png", context);
-		imgTexto = picture.ImageManager("texto.png", context);
+		imgTexto = picture.ImageManager("Texto_PorMim.png", context);
 		
 		
 	}

@@ -67,7 +67,7 @@ public class PeloOutro extends View implements Runnable
 		imgTop5 = picture.ImageManager("Top5FechadoPeloOutro.png", context);
 		imgCampanhas = picture.ImageManager("CampanhasPeloOutro.png", context);
 		imgCreditos = picture.ImageManager("Credito_PeloOutro.png", context);
-		imgTexto = picture.ImageManager("TelaPrincipal_Pormim.png", context);
+		imgTexto = picture.ImageManager("Texto_PeloOutro.png", context);
 		
 		
 		// TODO Auto-generated constructor stub
